@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPromotions));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
@@ -50,6 +52,7 @@
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.printForm1 = new Microsoft.VisualBasic.PowerPacks.Printing.PrintForm(this.components);
             this.grpDepartment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDepartment)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +100,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(454, 150);
+            this.lblName.Location = new System.Drawing.Point(430, 149);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 0;
@@ -152,6 +155,7 @@
             this.radClothing.TabStop = true;
             this.radClothing.Text = "&Clothing";
             this.radClothing.UseVisualStyleBackColor = true;
+            this.radClothing.CheckedChanged += new System.EventHandler(this.radClothing_CheckedChanged);
             // 
             // radEquipment
             // 
@@ -163,6 +167,7 @@
             this.radEquipment.TabStop = true;
             this.radEquipment.Text = "&Equipment/Accessories";
             this.radEquipment.UseVisualStyleBackColor = true;
+            this.radEquipment.CheckedChanged += new System.EventHandler(this.radEquipment_CheckedChanged);
             // 
             // radJuiceBar
             // 
@@ -174,6 +179,7 @@
             this.radJuiceBar.TabStop = true;
             this.radJuiceBar.Text = "&Juice Bar";
             this.radJuiceBar.UseVisualStyleBackColor = true;
+            this.radJuiceBar.CheckedChanged += new System.EventHandler(this.radJuiceBar_CheckedChanged);
             // 
             // radMembership
             // 
@@ -185,6 +191,7 @@
             this.radMembership.TabStop = true;
             this.radMembership.Text = "&Membership";
             this.radMembership.UseVisualStyleBackColor = true;
+            this.radMembership.CheckedChanged += new System.EventHandler(this.radMembership_CheckedChanged);
             // 
             // radPersonalTraining
             // 
@@ -196,23 +203,24 @@
             this.radPersonalTraining.TabStop = true;
             this.radPersonalTraining.Text = "Personal &Training";
             this.radPersonalTraining.UseVisualStyleBackColor = true;
+            this.radPersonalTraining.CheckedChanged += new System.EventHandler(this.radPersonalTraining_CheckedChanged);
             // 
             // rtfWelcome
             // 
-            this.rtfWelcome.Location = new System.Drawing.Point(518, 257);
+            this.rtfWelcome.Location = new System.Drawing.Point(433, 257);
             this.rtfWelcome.Name = "rtfWelcome";
             this.rtfWelcome.ReadOnly = true;
-            this.rtfWelcome.Size = new System.Drawing.Size(251, 61);
+            this.rtfWelcome.Size = new System.Drawing.Size(336, 61);
             this.rtfWelcome.TabIndex = 13;
             this.rtfWelcome.TabStop = false;
             this.rtfWelcome.Text = "";
             // 
             // txtPromotion
             // 
-            this.txtPromotion.Location = new System.Drawing.Point(518, 355);
+            this.txtPromotion.Location = new System.Drawing.Point(433, 355);
             this.txtPromotion.Name = "txtPromotion";
             this.txtPromotion.ReadOnly = true;
-            this.txtPromotion.Size = new System.Drawing.Size(251, 20);
+            this.txtPromotion.Size = new System.Drawing.Size(336, 20);
             this.txtPromotion.TabIndex = 14;
             this.txtPromotion.TabStop = false;
             // 
@@ -221,6 +229,7 @@
             this.picDepartment.Location = new System.Drawing.Point(25, 422);
             this.picDepartment.Name = "picDepartment";
             this.picDepartment.Size = new System.Drawing.Size(330, 128);
+            this.picDepartment.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picDepartment.TabIndex = 10;
             this.picDepartment.TabStop = false;
             // 
@@ -234,6 +243,7 @@
             this.chkImageVisible.TabIndex = 6;
             this.chkImageVisible.Text = "Image &Visible";
             this.chkImageVisible.UseVisualStyleBackColor = true;
+            this.chkImageVisible.CheckedChanged += new System.EventHandler(this.chkImageVisible_CheckedChanged);
             // 
             // btnSignIn
             // 
@@ -253,6 +263,7 @@
             this.btnPrint.TabIndex = 8;
             this.btnPrint.Text = "&Print";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnClear
             // 
@@ -263,6 +274,7 @@
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "C&lear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnExit
             // 
@@ -272,6 +284,15 @@
             this.btnExit.TabIndex = 9;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // printForm1
+            // 
+            this.printForm1.DocumentName = "document";
+            this.printForm1.Form = this;
+            this.printForm1.PrintAction = System.Drawing.Printing.PrintAction.PrintToPreview;
+            this.printForm1.PrinterSettings = ((System.Drawing.Printing.PrinterSettings)(resources.GetObject("printForm1.PrinterSettings")));
+            this.printForm1.PrintFileName = null;
             // 
             // frmPromotions
             // 
@@ -334,6 +355,7 @@
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnExit;
+        private Microsoft.VisualBasic.PowerPacks.Printing.PrintForm printForm1;
     }
 }
 
